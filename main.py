@@ -30,14 +30,18 @@ all_prices = [prices.getText() for prices in all_prices_list]
 
 chrome_driver_path = "C:\Development\chromedriver.exe"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
-driver.get("https://forms.gle/HLnmm8t7LRkfs3s6A")
-
-time.sleep(2)
-prices_input = driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
-address_input = driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
-link_input = driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
 
 for n in range(len(all_prices)):
+    driver.get("https://forms.gle/HLnmm8t7LRkfs3s6A")
+
+    time.sleep(2)
+    prices_input = driver.find_element_by_xpath(
+        '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    address_input = driver.find_element_by_xpath(
+        '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    link_input = driver.find_element_by_xpath(
+        '//*[@id="mG61Hd"]/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
+
     time.sleep(1)
     prices_input.send_keys(all_prices[n])
     time.sleep(1)
@@ -47,6 +51,7 @@ for n in range(len(all_prices)):
     time.sleep(1)
     btn_submit =driver.find_element_by_xpath('//*[@id="mG61Hd"]/div[2]/div/div[3]/div[1]/div[1]/div/span/span')
     btn_submit.click()
-    time.sleep(3)
-    back_link = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[1]/div/div[4]/a')
-    back_link.click()
+    time.sleep(2)
+    # time.sleep(3)
+    # back_link = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[1]/div/div[4]/a')
+    # back_link.click()
